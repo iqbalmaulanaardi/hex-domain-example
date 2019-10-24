@@ -12,7 +12,7 @@ import (
 
 func main() {
 	var lister listing.Service
-	s, _ := database.NewStorage()
+	s, _ := database.NewStorage("hex-example")
 	lister = listing.NewService(s)
 	router := rest.Handler(lister)
 

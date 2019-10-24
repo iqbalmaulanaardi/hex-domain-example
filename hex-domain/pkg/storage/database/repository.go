@@ -16,10 +16,10 @@ type TransactionRepo interface {
 	GetUsersRepo() ([]models.User, error)
 }
 
-func NewStorage() (*Storage, error) {
+func NewStorage(dbname string) (*Storage, error) {
 	var err error
 	s := new(Storage)
-	DBURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", "root", "password", "127.0.0.1", "3306", "hex-example")
+	DBURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", "root", "password", "127.0.0.1", "3306", dbname)
 
 	s.DB, err = gorm.Open("mysql", DBURL)
 	if err != nil {
